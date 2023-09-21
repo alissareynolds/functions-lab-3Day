@@ -108,11 +108,11 @@ function contains(names, name, callback) {
 
 contains(names, 'Colt', result => {
   if (result === true) {
-    console.log('Colt is in the array')
+    console.log('Colt is in the array');
   } else {
-    console.log('Colt is not in the array')
+    console.log('Colt is not in the array');
   }
-})
+});
 
 
 
@@ -158,9 +158,9 @@ function printAString(uniqArr) {
 
 // CODE HERE 
 
-let each = (names, callback) => {
-  for (let i = 0; i, names.length; i++) {
-    callback(names[i]);
+let each = (array, callback) => {
+  for (let i = 0; i < array.length; i++) {
+    callback(array, i);
   }
 }
 /*
@@ -172,10 +172,11 @@ let each = (names, callback) => {
 
 // CODE HERE
 
-each(names, callback);
 function printTheString(item, index) {
   console.log(`The item at index ${index} is ${item[index]}`);
 }
+
+each(names, printTheString);
 
 
 ////////// CHALLENGES //////////
@@ -219,9 +220,8 @@ function addingFactory(firstNum) {
 */
 
 // CODE HERE
-const addingFactoryResult = addingFactory(); 
+const addTen = addingFactory(10); 
 
-let addTen = addingFactory(10);
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -233,11 +233,13 @@ let addTen = addingFactory(10);
 */
 
 // CODE HERE
+let r1 = addTen(12); 
 
-addTen(2);
-console.log(addTen);
-addTen(5); 
-console.log(addTen);
+console.log(r1);
+
+let r2 = addTen(15); 
+
+console.log(r2);
 
 
 /*
@@ -253,7 +255,8 @@ console.log(addTen);
 
 // CODE HERE
 
-
+const add100 = addingFactory(100);
+console.log(add100(50));
 
 ////////// CHALLENGE 2 //////////
 
@@ -288,11 +291,19 @@ var users = [
 
 // CODE HERE 
 
-
+function getUserById(users, id, callback) {
+  for(let i = 0; i < users.length; i++) {
+    if (users[i].id === id) {
+      callback(users[i]);
+      break;
+    }
+  }
+}
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address)
+getUserById(users, '16t', user => {
+  console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address)
+})
